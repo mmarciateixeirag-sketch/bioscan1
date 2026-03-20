@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BioScan | Preventive Health Platform</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter;
+}
+
+body{
+background:#0f172a;
+color:#e2e8f0;
+}
+
+/* NAV */
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:#020617;
+border-bottom:1px solid #1e293b;
+position:fixed;
+width:100%;
+z-index:1000;
+}
+
+.logo{
+font-size:22px;
+font-weight:600;
+color:#22c55e;
+}
+
+nav a{
+margin-left:20px;
+text-decoration:none;
+color:#e2e8f0;
+}
+
+/* HERO */
+
+.hero{
+height:90vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:linear-gradient(120deg,#020617,#022c22);
+padding:40px;
+}
+
+.hero h1{
+font-size:52px;
+margin-bottom:20px;
+}
+
+.hero p{
+max-width:600px;
+margin-bottom:30px;
+color:#94a3b8;
+}
+
+.btn{
+padding:14px 36px;
+background:#22c55e;
+color:black;
+border-radius:30px;
+text-decoration:none;
+}
+
+/* SECTION */
+
+.section{
+padding:120px 10%;
+text-align:center;
+}
+
+.section h2{
+font-size:36px;
+margin-bottom:20px;
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+margin-top:50px;
+}
+
+.card{
+background:#111827;
+padding:30px;
+border-radius:14px;
+}
+
+/* SCANNER */
+
+.scanner{
+width:250px;
+height:450px;
+margin:auto;
+margin-top:40px;
+background:#020617;
+border-radius:20px;
+position:relative;
+overflow:hidden;
+}
+
+.body{
+width:90px;
+height:260px;
+background:#22c55e;
+border-radius:50px;
+position:absolute;
+top:90px;
+left:50%;
+transform:translateX(-50%);
+opacity:0.3;
+}
+
+.scanline{
+position:absolute;
+width:100%;
+height:4px;
+background:#22c55e;
+animation:scan 3s linear infinite;
+}
+
+@keyframes scan{
+0%{top:0}
+100%{top:100%}
+}
+
+/* DASHBOARD */
+
+.dashboard{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:40px;
+margin-top:50px;
+}
+
+.chart{
+background:#111827;
+padding:25px;
+border-radius:12px;
+}
+
+/* FORMS */
+
+input,button{
+padding:12px;
+margin:10px;
+border-radius:8px;
+border:none;
+}
+
+button{
+background:#22c55e;
+color:black;
+cursor:pointer;
+}
+
+/* TESTIMONIALS */
+
+.testimonials{
+background:#020617;
+padding:120px 10%;
+}
+
+/* FAQ */
+
+.faq{
+max-width:800px;
+margin:auto;
+text-align:left;
+margin-top:40px;
+}
+
+.faq h4{
+margin-top:20px;
+color:#22c55e;
+}
+
+/* FOOTER */
+
+footer{
+background:#020617;
+padding:40px;
+text-align:center;
+margin-top:80px;
+}
+
+.hidden{
+opacity:0;
+transform:translateY(40px);
+transition:all 0.8s ease;
+}
+
+.show{
+opacity:1;
+transform:translateY(0);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">BioScan</div>
+
+<nav>
+
+<a href="#scan">Scan</a>
+<a href="#technology">Technology</a>
+<a href="#dashboard">Dashboard</a>
+<a href="#booking">Book</a>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>Understand your health before symptoms appear</h1>
+
+<p>
+
+BioScan combines body scanning, artificial intelligence and wearable data
+to detect early health risks.
+
+</p>
+
+<a class="btn">Start monitoring</a>
+
+</section>
+
+<section id="scan" class="section hidden">
+
+<h2>The BioScan body scan</h2>
+
+<p>A non-invasive scan analyzing thousands of biometric indicators.</p>
+
+<div class="scanner">
+
+<div class="body"></div>
+<div class="scanline"></div>
+
+</div>
+
+</section>
+
+<section id="technology" class="section hidden">
+
+<h2>What the scan analyzes</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Cardiovascular health</h3>
+
+<p>Heart rate patterns and early cardiovascular risk indicators.</p>
+
+</div>
+
+<div class="card">
+
+<h3>Metabolic health</h3>
+
+<p>Indicators related to diabetes and metabolic disorders.</p>
+
+</div>
+
+<div class="card">
+
+<h3>Skin analysis</h3>
+
+<p>Detection of abnormal skin patterns and dermatological risks.</p>
+
+</div>
+
+<div class="card">
+
+<h3>Respiratory health</h3>
+
+<p>Blood oxygen levels and pulmonary indicators.</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="dashboard" class="section hidden">
+
+<h2>Your health dashboard</h2>
+
+<div class="dashboard">
+
+<div class="chart">
+<canvas id="heart"></canvas>
+</div>
+
+<div class="chart">
+<canvas id="risk"></canvas>
+</div>
+
+<div class="chart">
+<canvas id="oxygen"></canvas>
+</div>
+
+<div class="chart">
+<canvas id="metabolic"></canvas>
+</div>
+
+</div>
+
+</section>
+
+<section id="booking" class="section hidden">
+
+<h2>Book a scan</h2>
+
+<form id="bookingForm">
+
+<input type="text" placeholder="Full name" required>
+
+<input type="email" placeholder="Email" required>
+
+<input type="date" required>
+
+<button type="submit">Schedule scan</button>
+
+</form>
+
+<p id="confirm"></p>
+
+</section>
+
+<section class="testimonials hidden">
+
+<h2 style="text-align:center;margin-bottom:40px;">Patient stories</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<p>
+
+"The BioScan detected a cardiovascular issue early,
+allowing me to seek treatment immediately."
+
+</p>
+
+<b>— Sarah L.</b>
+
+</div>
+
+<div class="card">
+
+<p>
+
+"The scan was fast and the report was extremely detailed."
+
+</p>
+
+<b>— Michael T.</b>
+
+</div>
+
+<div class="card">
+
+<p>
+
+"It helped me understand my health in a completely new way."
+
+</p>
+
+<b>— Daniel R.</b>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section hidden">
+
+<h2>Frequently asked questions</h2>
+
+<div class="faq">
+
+<h4>How long does the scan take?</h4>
+<p>Approximately 15 minutes.</p>
+
+<h4>Is the scan safe?</h4>
+<p>Yes. It is completely non-invasive.</p>
+
+<h4>How often should I scan?</h4>
+<p>Most patients repeat the scan every 6-12 months.</p>
+
+<h4>Can BioScan integrate with smartwatches?</h4>
+<p>
+Yes. The BioScan platform can integrate wearable data such as heart rate,
+activity levels and sleep metrics from modern smartwatches.
+</p>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 BioScan Health Technology
+
+</footer>
+
+<script>
+
+/* SCROLL ANIMATION */
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show")
+}
+})
+})
+
+document.querySelectorAll(".hidden").forEach(el=>{
+observer.observe(el)
+})
+
+/* BOOKING */
+
+document.getElementById("bookingForm").addEventListener("submit",function(e){
+
+e.preventDefault()
+
+document.getElementById("confirm").innerText=
+"Appointment scheduled successfully."
+
+})
+
+/* CHARTS */
+
+new Chart(document.getElementById("heart"),{
+type:"line",
+data:{
+labels:["Jan","Feb","Mar","Apr","May","Jun"],
+datasets:[{
+label:"Heart Rate",
+data:[72,74,73,75,72,71],
+borderColor:"#22c55e"
+}]
+}
+})
+
+new Chart(document.getElementById("risk"),{
+type:"bar",
+data:{
+labels:["Cardiac","Diabetes","Hypertension","Obesity"],
+datasets:[{
+label:"Risk %",
+data:[10,12,18,14],
+backgroundColor:"#22c55e"
+}]
+}
+})
+
+new Chart(document.getElementById("oxygen"),{
+type:"line",
+data:{
+labels:["Mon","Tue","Wed","Thu","Fri","Sat"],
+datasets:[{
+label:"Blood Oxygen",
+data:[98,97,98,96,97,98],
+borderColor:"#4ade80"
+}]
+}
+})
+
+new Chart(document.getElementById("metabolic"),{
+type:"radar",
+data:{
+labels:["Cardio","Metabolic","Immune","Neurological","Pulmonary"],
+datasets:[{
+label:"Indicators",
+data:[85,78,90,74,82],
+backgroundColor:"rgba(34,197,94,0.3)"
+}]
+}
+})
+
+</script>
+
+</body>
+
+</html>
